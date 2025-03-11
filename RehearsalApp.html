@@ -101,7 +101,7 @@
 	    	display: none;
         }
 
-		#textareaGreek {
+		#textareaAncientGreek {
 	    	display: none;
         }
 
@@ -203,7 +203,7 @@
 				if (stringAlphabetSelected == "ModernGreek")  { stringAlphabet = document.getElementById("textareaModernGreek").value; }
 				if (stringAlphabetSelected == "Hebrew")  { stringAlphabet = document.getElementById("textareaHebrew").value; }
 				if (stringAlphabetSelected == "Arabic")  { stringAlphabet = document.getElementById("textareaArabic").value; }
-				if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaGreek").value; }
+				if (stringAlphabetSelected == "AncientGreek")  { stringAlphabet = document.getElementById("textareaAncientGreek").value; }
 						
 				let arrayAlphabet = [];
 				arrayAlphabet = stringAlphabet.split("\n");
@@ -270,7 +270,7 @@
 			if (document.getElementById("radioButtonModernGreek").checked) { stringAlphabetSelected = "ModernGreek"; }
 			if (document.getElementById("radioButtonHebrew").checked) { stringAlphabetSelected = "Hebrew"; }
 			if (document.getElementById("radioButtonArabic").checked) { stringAlphabetSelected = "Arabic"; }
-			if (document.getElementById("radioButtonGreek").checked) { stringAlphabetSelected = "Greek"; }
+			if (document.getElementById("radioButtonAncientGreek").checked) { stringAlphabetSelected = "AncientGreek"; }
 
 			if (document.getElementById("radioButtontypeOfFileVocabulary").checked) { typeOfFile = "Vocabulary"; }
 			if (document.getElementById("radioButtontypeOfFileSentences").checked) { typeOfFile = "Sentences"; }
@@ -520,7 +520,7 @@
 				if (stringAlphabetSelected == "ModernGreek")  { stringAlphabet = document.getElementById("textareaModernGreek").value; }
 				if (stringAlphabetSelected == "Hebrew")  { stringAlphabet = document.getElementById("textareaHebrew").value; }
 				if (stringAlphabetSelected == "Arabic")  { stringAlphabet = document.getElementById("textareaArabic").value; }
-				if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaGreek").value; }
+				if (stringAlphabetSelected == "AncientGreek")  { stringAlphabet = document.getElementById("textareaAncientGreek").value; }
 			
 	       		let arrayAlphabet = [];
 				arrayAlphabet = stringAlphabet.split("\n");
@@ -610,7 +610,7 @@
 				if (stringAlphabetSelected == "Cyrillic")  { stringAlphabet = document.getElementById("textareaCyrillic").value; }
 				if (stringAlphabetSelected == "Hebrew")  { stringAlphabet = document.getElementById("textareaHebrew").value; }
 				if (stringAlphabetSelected == "Arabic")  { stringAlphabet = document.getElementById("textareaArabic").value; }
-				if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaGreek").value; }
+				if (stringAlphabetSelected == "AncientGreek")  { stringAlphabet = document.getElementById("textareaAncientGreek").value; }
 
 				let intNumberOfLines = 0;
 
@@ -618,7 +618,7 @@
     	    	if (stringAlphabetSelected == "Cyrillic") { intNumberOfLines = 33; }
         		if (stringAlphabetSelected == "Hebrew") { intNumberOfLines = 28; }
         		if (stringAlphabetSelected == "Arabic") { intNumberOfLines = 28; }
-        		if (stringAlphabetSelected == "Greek") { intNumberOfLines = 24; }
+        		if (stringAlphabetSelected == "AncientGreek") { intNumberOfLines = 24; }
 
 				
 
@@ -2072,7 +2072,7 @@
 				<tr><td><input type="radio" id="radioButtonCyrillic" value="" name="radiobuttonsAlphabet">Cyrillic</td></tr>
 				<tr><td><input type="radio" id="radioButtonHebrew" value="" name="radiobuttonsAlphabet" >Hebrew</td></tr>
 				<tr><td><input type="radio" id="radioButtonArabic" value="" name="radiobuttonsAlphabet">Arabic</td></tr>
-				<tr><td><input type="radio" id="radioButtonGreek" value="" name="radiobuttonsAlphabet">Ancient Greek</td></tr>
+				<tr><td><input type="radio" id="radioButtonAncientGreek" value="" name="radiobuttonsAlphabet">Ancient Greek</td></tr>
 			</table>
 			</td><td>
 			<table>
@@ -2750,7 +2750,7 @@
 	
 	<table>
 		<tr><td>
-<textarea id="textareaGreek" rows="30" spellcheck="false">
+<textarea id="textareaAncientGreek" rows="30" spellcheck="false">
 Α	A	A	913	0391	&Alpha;	GREEK CAPITAL LETTER ALPHA
 Β	B	B	914	0392	&Beta;	GREEK CAPITAL LETTER BETA
 Γ	G	G	915	0393	&Gamma;	GREEK CAPITAL LETTER GAMMA

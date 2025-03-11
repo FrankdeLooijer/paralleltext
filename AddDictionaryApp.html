@@ -109,7 +109,7 @@
 			if (document.getElementById("radioButtonHebrew").checked) {stringDictionary = "https://www.bing.com/translator/?from=he&to=en&text=";} 
 			if (document.getElementById("radioButtonArabic").checked) {stringDictionary = "https://www.bing.com/translator/?from=ar&to=en&text=";} 
 			if (document.getElementById("radioButtonLatin").checked) {stringDictionary = "http://www.perseus.tufts.edu/hopper/morph?la=la&l=";} 
-			if (document.getElementById("radioButtonGreek").checked) {stringDictionary = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
+			if (document.getElementById("radioButtonAncientGreek").checked) {stringDictionary = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
 			if (document.getElementById("radioButtonOther").checked) {stringDictionary = document.getElementById("textareaOther").value ;} 
 
 			functionCloseAllTables();
@@ -544,7 +544,7 @@
 </tr>
 <tr>
 	<td><input type="radio" id="radioButtonItalian" value="" name="radiobuttonsDictionary">Italian (Bing)</td>
-	<td><input type="radio" id="radioButtonGreek" value="" name="radiobuttonsDictionary">Ancient Greek (Perseus)</td>
+	<td><input type="radio" id="radioButtonAncientGreek" value="" name="radiobuttonsDictionary">Ancient Greek (Perseus)</td>
 </tr>
 <tr><td><input type="radio" id="radioButtonOther" value="" name="radiobuttonsDictionary">Other (e. g. 'https://www.merriam-webster.com/dictionary/')</td></tr>
 <tr><td><textarea id="textareaOther" rows="1" cols="50"></textarea></td></tr>

@@ -52,7 +52,7 @@
 	    	display: none;
         }
 
-		#textareaGreek {
+		#textareaAncientGreek {
 	    	display: none;
         }
 		
@@ -357,7 +357,7 @@
 			if (stringAlphabetSelected == "ModernGreek")  { stringAlphabet = document.getElementById("textareaModernGreek").value; }
 			if (stringAlphabetSelected == "Hebrew")  { stringAlphabet = document.getElementById("textareaHebrew").value; }
 			if (stringAlphabetSelected == "Arabic")  { stringAlphabet = document.getElementById("textareaArabic").value; }
-			if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaGreek").value; }
+			if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaAncientGreek").value; }
 			
        		let arrayAlphabet = [];
 			arrayAlphabet = stringAlphabet.split("\n");
@@ -447,7 +447,7 @@
 				if (stringAlphabetSelected == "Cyrillic")  { stringAlphabet = document.getElementById("textareaCyrillic").value; }
 				if (stringAlphabetSelected == "Hebrew")  { stringAlphabet = document.getElementById("textareaHebrew").value; }
 				if (stringAlphabetSelected == "Arabic")  { stringAlphabet = document.getElementById("textareaArabic").value; }
-				if (stringAlphabetSelected == "Greek")  { stringAlphabet = document.getElementById("textareaGreek").value; }
+				if (stringAlphabetSelected == "AncientGreek")  { stringAlphabet = document.getElementById("textareaAncientGreek").value; }
 
 				let intNumberOfLines = 0;
 
@@ -455,7 +455,7 @@
     	    	if (stringAlphabetSelected == "Cyrillic") { intNumberOfLines = 33; }
         		if (stringAlphabetSelected == "Hebrew") { intNumberOfLines = 28; }
         		if (stringAlphabetSelected == "Arabic") { intNumberOfLines = 28; }
-        		if (stringAlphabetSelected == "Greek") { intNumberOfLines = 24; }
+        		if (stringAlphabetSelected == "AncientGreek") { intNumberOfLines = 24; }
 
 				let arrayAlphabet = [];
 				arrayAlphabet = stringAlphabet.split("\n");
@@ -586,7 +586,7 @@
 				if (document.getElementById("radioButtonHebrewOriginal").checked) {stringAlphabetSelected = "Hebrew"; stringDictionaryOriginal = "https://www.bing.com/translator/?from=he&to=en&text=";} 
 				if (document.getElementById("radioButtonArabicOriginal").checked) {stringAlphabetSelected = "Arabic"; stringDictionaryOriginal = "https://www.bing.com/translator/?from=ar&to=en&text=";} 
 				if (document.getElementById("radioButtonLatinOriginal").checked) {stringAlphabetSelected = "Latin"; stringDictionaryOriginal = "http://www.perseus.tufts.edu/hopper/morph?la=la&l=";} 
-				if (document.getElementById("radioButtonGreekOriginal").checked) {stringAlphabetSelected = "Greek"; stringDictionaryOriginal = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
+				if (document.getElementById("radioButtonAncientGreekOriginal").checked) {stringAlphabetSelected = "AncientGreek"; stringDictionaryOriginal = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
 				if (document.getElementById("radioButtonOtherOriginal").checked) {stringAlphabetSelected = "Latin"; stringDictionaryOriginal = document.getElementById("textareaOtherOriginal").value ;} 
 
 				if (document.getElementById("radioButtonEnglishTranslated").checked) {stringDictionaryTranslated = "https://www.ldoceonline.com/dictionary/";} 
@@ -602,7 +602,7 @@
 				if (document.getElementById("radioButtonHebrewTranslated").checked) {stringDictionaryTranslated = "https://www.bing.com/translator/?from=he&to=en&text=";} 
 				if (document.getElementById("radioButtonArabicTranslated").checked) {stringDictionaryTranslated = "https://www.bing.com/translator/?from=ar&to=en&text=";} 
 				if (document.getElementById("radioButtonLatinTranslated").checked) {stringDictionaryTranslated = "http://www.perseus.tufts.edu/hopper/morph?la=la&l=";} 
-				if (document.getElementById("radioButtonGreekTranslated").checked) {stringDictionaryTranslated = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
+				if (document.getElementById("radioButtonAncientGreekTranslated").checked) {stringDictionaryTranslated = "http://www.perseus.tufts.edu/hopper/morph?la=greek&l=";} 
 				if (document.getElementById("radioButtonOtherTranslated").checked) {stringDictionaryTranslated = document.getElementById("textareaOtherTranslated").value ;} 
 
 				stringOrderedPartOriginal = [];
@@ -683,9 +683,9 @@
     			var k = stringHelp.length - 2;
     			stringHelp = stringHelp.substring(0, k);
 
-				if (document.getElementById("textareaEditOriginal").value == "[End of file encountered]")
+				if (document.getElementById("textareaEditOriginal").value == "[End of file encountered.]")
 				{
-					stringUnorderedPartOriginal = "[End of file encountered]";
+					stringUnorderedPartOriginal = "[End of file encountered.]";
 				}
 
 				// remove a possible transliteration
@@ -696,7 +696,7 @@
 					stringUnorderedPartOriginal = arrayDeleteTransliteration[1];
 				}
 
-    	   		stringHelp += "[!split??]\n" + stringUnorderedPartOriginal + "[!split??]\n" + stringAlphabetSelected + "[!split??]\n" + stringDictionaryOriginal;
+    	   		stringHelp += "[!split??]" + stringUnorderedPartOriginal + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal;
 			}
 			else
 			{
@@ -709,7 +709,7 @@
 					stringUnorderedPartOriginal = arrayDeleteTransliteration[1];
 				}
 
-    			stringHelp += "[Not yet one sentence processed][!split??]\n" + stringUnorderedPartOriginal + "[!split??]\n" + stringAlphabetSelected + "[!split??]\n" + stringDictionaryOriginal;
+    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditOriginal").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal;
 
 			}
 
@@ -727,24 +727,24 @@
     			var k = stringHelp.length - 2;
     			stringHelp = stringHelp.substring(0, k);
 
-				if (document.getElementById("textareaEditTranslated").value == "[End of file encountered]")
+				if (document.getElementById("textareaEditTranslated").value == "[End of file encountered.]")
 				{
-					stringUnorderedPartTranslated = "[End of file encountered]";
+					stringUnorderedPartTranslated = "[End of file encountered.]";
 				}
 
-    			stringHelp += "[!split??]\n" + stringUnorderedPartTranslated + "[!split??]\n" + stringAlphabetSelected + "[!split??]\n" + stringDictionaryTranslated;
+    			stringHelp += "[!split??]" + stringUnorderedPartTranslated + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated;
 
 			}
 			else
 			{
 
-    			stringHelp += "[Not yet one sentence processed][!split??]\n" + stringUnorderedPartTranslated + "[!split??]\n" + stringAlphabetSelected + "[!split??]\n" + stringDictionaryTranslated;
+    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditOriginal").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated;
 
 			}
 
 			var toSaveText2 = stringHelp;
 
-			document.getElementById('textareaSave').value = toSaveText1 + "\n{!split??}\n" + toSaveText2;
+			document.getElementById('textareaSave').value = toSaveText1 + "{!split??}" + toSaveText2;
 
 			document.getElementById('tableNew').style.display = "none";
 			document.getElementById('tableOpen').style.display = "none";
@@ -778,13 +778,13 @@
 		let stringTextToOpen = document.getElementById('textareaOpen').value;
 
 		let arrayTextToOpen = [];
-		arrayTextToOpen = stringTextToOpen.split("\n{!split??}\n");
+		arrayTextToOpen = stringTextToOpen.split("{!split??}");
 		
 		let arrayOriginal = arrayTextToOpen[0];
 		let arrayTranslated = arrayTextToOpen[1];
 
 		let helpArray1 = [];
-		helpArray1 = arrayOriginal.split("[!split??]\n")
+		helpArray1 = arrayOriginal.split("[!split??]")
 		
 		stringOrderedPartOriginal = [];
 		if (helpArray1[0] == "[Not yet one sentence processed]")
@@ -806,7 +806,7 @@
 		}
 		
 		var helpArray2 = [];
-		helpArray2 = arrayTranslated.split("[!split??]\n")
+		helpArray2 = arrayTranslated.split("[!split??]")
 
 		stringOrderedPartTranslated = [];
 		if (helpArray2[0] == "[Not yet one sentence processed]")
@@ -829,16 +829,16 @@
 		document.getElementById('textareaEditTranslated').value = stringUnorderedPartTranslated;
 		document.getElementById('textareaEditOriginal').value = stringUnorderedPartOriginal;
 
-		if (stringUnorderedPartOriginal == "[End of file encountered]")
+		if (stringUnorderedPartOriginal == "[End of file encountered.]")
 		{
 			stringUnorderedPartOriginal = "";
-			document.getElementById("textareaEditOriginal").value = "[End of file encountered]";
+			document.getElementById("textareaEditOriginal").value = "[End of file encountered.]";
 		}
 
-		if (stringUnorderedPartTranslated == "[End of file encountered]")
+		if (stringUnorderedPartTranslated == "[End of file encountered.]")
 		{
 			stringUnorderedPartTranslated = "";
-			document.getElementById("textareaEditTranslated").value = "[End of file encountered]";
+			document.getElementById("textareaEditTranslated").value = "[End of file encountered.]";
 		}
 
 		document.getElementById('tableNew').style.display = "none";
@@ -885,7 +885,7 @@
 		stringUnorderedPartOriginal = document.getElementById("textareaEditOriginal").value;
 		stringUnorderedPartTranslated = document.getElementById("textareaEditTranslated").value;
 
-		if(document.getElementById("textareaEditOriginal").value != "[End of file encountered]" && document.getElementById("textareaEditTranslated").value != "[End of file encountered]")
+		if(document.getElementById("textareaEditOriginal").value != "[End of file encountered.]" && document.getElementById("textareaEditTranslated").value != "[End of file encountered.]")
 		{ 
 
 			// remove a possible transliteration
@@ -944,12 +944,12 @@
 				while(stringUnorderedPartOriginal.indexOf("\n\n") != -1) { stringUnorderedPartOriginal = stringUnorderedPartOriginal.replace(/\n\n/g, '\n'); }
 				stringOrderedPartOriginal.push(stringUnorderedPartOriginal);
 				stringUnorderedPartOriginal = "";
-				document.getElementById("textareaEditOriginal").value = "[End of file encountered]";
+				document.getElementById("textareaEditOriginal").value = "[End of file encountered.]";
 
 				while(stringUnorderedPartTranslated.indexOf("\n\n") != -1) { stringUnorderedPartTranslated = stringUnorderedPartTranslated.replace(/\n\n/g, '\n'); }
 				stringOrderedPartTranslated.push(stringUnorderedPartTranslated);
 				stringUnorderedPartTranslated = "";
-				document.getElementById("textareaEditTranslated").value = "[End of file encountered]";
+				document.getElementById("textareaEditTranslated").value = "[End of file encountered.]";
 
 				document.getElementById("labelPassed").innerHTML = "Passed: 100%"
 
@@ -1128,7 +1128,7 @@
 				stringUnorderedPartOriginal = stringUnorderedPartOriginal.substring(m + 3);
 			}
 			
-			if(document.getElementById("textareaEditOriginal").value == "[End of file encountered]" && document.getElementById("textareaEditTranslated").value == "[End of file encountered]")
+			if(document.getElementById("textareaEditOriginal").value == "[End of file encountered.]" && document.getElementById("textareaEditTranslated").value == "[End of file encountered.]")
 			{
 				stringUnorderedPartOriginal = stringOrderedPartOriginal[stringOrderedPartOriginal.length - 1];
 				stringUnorderedPartTranslated = stringOrderedPartTranslated[stringOrderedPartTranslated.length - 1];
@@ -1189,7 +1189,7 @@
 		if (stringAlphabetSelected != "Latin")
 		{
 
-			if (document.getElementById("textareaEditOriginal").value != "[End of file encountered]")
+			if (document.getElementById("textareaEditOriginal").value != "[End of file encountered.]")
 			{
 
 				stringUnorderedPartOriginal = document.getElementById('textareaEditOriginal').value;
@@ -1317,10 +1317,11 @@
 				m++;
 
 			}
-
-			if(stringUnorderedPartTranslated != "[End of file encountered.]")
+			
+			if(stringUnorderedPartOriginal != "[End of file encountered.]")
 			{
-    			stringToConcord += stringUnorderedPartOriginal;
+				stringToConcord += document.getElementById('textareaEditOriginal').value
+    			// stringToConcord += stringUnorderedPartOriginal;
 			}
 
 			const myPunctuation = document.getElementById('textareaPunctuation').value;
@@ -1387,9 +1388,12 @@
     		i++;
 
 			}
-
-			arrayConcordance.sort();
 			
+			let stringsToRemove = ["", "end", "of", "file", "encountered"];
+			let arrayNew = arrayConcordance.filter(item => !stringsToRemove.includes(item));
+			arrayConcordance = arrayNew;
+			arrayConcordance.sort();
+
 			var stringConcordance = "Your text contains " + arrayConcordance.length + " morphemes:\n\n";
 			i = 0;
 			while (i < arrayConcordance.length)
@@ -1738,7 +1742,7 @@
 <tr><td><input type="radio" id="radioButtonHebrewOriginal" value="" name="radiobuttonsDictionary">Hebrew (Bing)</td></tr>
 <tr><td><input type="radio" id="radioButtonArabicOriginal" value="" name="radiobuttonsDictionary">Arabic (Bing)</td></tr>
 <tr><td><input type="radio" id="radioButtonLatinOriginal" value="" name="radiobuttonsDictionary" >Latin (Perseus)</td></tr>
-<tr><td><input type="radio" id="radioButtonGreekOriginal" value="" name="radiobuttonsDictionary">Ancient Greek (Perseus)</td></tr>
+<tr><td><input type="radio" id="radioButtonAncientGreekOriginal" value="" name="radiobuttonsDictionary">Ancient Greek (Perseus)</td></tr>
 <tr><td><input type="radio" id="radioButtonOtherOriginal" value="" name="radiobuttonsDictionary">Other (e. g. 'https://www.merriam-webster.com/dictionary/')</td></tr>
 <tr><td><textarea id="textareaOtherOriginal" cols="50" rows="1"></textarea></td></tr>
 <tr>
@@ -1772,7 +1776,7 @@
 <tr><td><input type="radio" id="radioButtonHebrewTranslated" value="" name="radiobuttonsDictionary1">Hebrew (Bing)</td></tr>
 <tr><td><input type="radio" id="radioButtonArabicTranslated" value="" name="radiobuttonsDictionary1">Arabic (Bing)</td></tr>
 <tr><td><input type="radio" id="radioButtonLatinTranslated" value="" name="radiobuttonsDictionary1" >Latin (Perseus)</td></tr>
-<tr><td><input type="radio" id="radioButtonGreekTranslated" value="" name="radiobuttonsDictionary1">Ancient Greek (Perseus)</td></tr>
+<tr><td><input type="radio" id="radioButtonAncientGreekTranslated" value="" name="radiobuttonsDictionary1">Ancient Greek (Perseus)</td></tr>
 <tr><td><input type="radio" id="radioButtonOtherTranslated" value="" name="radiobuttonsDictionary1">Other (e. g. 'https://www.merriam-webster.com/dictionary/')</td></tr>
 <tr><td><textarea id="textareaOtherTranslated" cols="50" rows="1"></textarea></td></tr>
 
@@ -2306,7 +2310,7 @@ $
 </table>
 
 <table>
-<tr><td><textarea id="textareaGreek" rows="30" spellcheck="false">
+<tr><td><textarea id="textareaAncientGreek" rows="30" spellcheck="false">
 Α	A	A	913	0391	&Alpha;	GREEK CAPITAL LETTER ALPHA
 Β	B	B	914	0392	&Beta;	GREEK CAPITAL LETTER BETA
 Γ	G	G	915	0393	&Gamma;	GREEK CAPITAL LETTER GAMMA
