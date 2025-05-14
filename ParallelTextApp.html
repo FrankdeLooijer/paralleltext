@@ -70,6 +70,9 @@
 	let stringOrderedPartTranslated = [];
 	let stringUnorderedPartTranslated = "";
 
+	let stringURLToOriginal = "";
+	let stringURLToTranslation = "";
+
 	let i;
 	
 	function functionSentencewise(myTextarea) {
@@ -565,6 +568,9 @@
 				document.getElementById('textareaEditOriginal').value = functionSentencewise(document.getElementById('textareaNewOriginal').value);
 				document.getElementById('textareaEditTranslated').value = functionSentencewise(document.getElementById('textareaNewTranslated').value);
 
+				stringURLToOriginal = document.getElementById("textareaURLToOriginal").value;
+				stringURLToTranslation = document.getElementById("textareaURLToTranslation").value;
+
 				if (confirm("Do you want newline indicators ('<>')'to be removed?\n" +
 				"This is advisable if these indicators do not indicate meaningful units,\n" +
 				"like in dialogues, poetry, song texts or stage plays."))
@@ -618,12 +624,14 @@
 				document.getElementById('tableHTMLResult').style.display = "none";
 
 				document.getElementById('textAuthor').value = "";
-				document.getElementById('textTitle').value = "";
+				document.getElementById('textTitleOriginal').value = "";
+				document.getElementById('textTitleTranslation').value = "";
 				document.getElementById("checkboxEnumerate").checked = false;
 				document.getElementById("checkboxSequential").checked = false;
 				document.getElementById("checkboxPlainText").checked = false;
 				document.getElementById("checkboxTransliterateHTML").checked = false;
-
+				document.getElementById("checkboxAddURL").checked = false;
+				
 				document.getElementById("checkboxTransliterate").checked = false;
 				document.getElementById("checkboxEnable").checked = false;
 
@@ -631,7 +639,9 @@
 				document.getElementById('textareaNewTranslated').value = "";
 				document.getElementById("radioButtonEnglishOriginal").checked = true;
 				document.getElementById("radioButtonEnglishTranslated").checked = true;
-				
+				document.getElementById('textareaURLToOriginal').value = "";
+				document.getElementById('textareaURLToTranslation').value = "";
+								
 				if (stringAlphabetSelected == "Latin")
 				{
 					document.getElementById("buttonAlphabet").style.visibility = "hidden";
@@ -696,7 +706,7 @@
 					stringUnorderedPartOriginal = arrayDeleteTransliteration[1];
 				}
 
-    	   		stringHelp += "[!split??]" + stringUnorderedPartOriginal + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal;
+    	   		stringHelp += "[!split??]" + stringUnorderedPartOriginal + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal + "[!split??]" + stringURLToOriginal;
 			}
 			else
 			{
@@ -709,7 +719,7 @@
 					stringUnorderedPartOriginal = arrayDeleteTransliteration[1];
 				}
 
-    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditOriginal").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal;
+    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditOriginal").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryOriginal + "[!split??]" + stringURLToOriginal;
 
 			}
 
@@ -732,13 +742,13 @@
 					stringUnorderedPartTranslated = "[End of file encountered.]";
 				}
 
-    			stringHelp += "[!split??]" + stringUnorderedPartTranslated + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated;
+    			stringHelp += "[!split??]" + stringUnorderedPartTranslated + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated + "[!split??]" + stringURLToTranslation;
 
 			}
 			else
 			{
 
-    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditOriginal").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated;
+    			stringHelp += "[Not yet one sentence processed][!split??]" + document.getElementById("textareaEditTranslated").value + "[!split??]" + stringAlphabetSelected + "[!split??]" + stringDictionaryTranslated + "[!split??]" + stringURLToTranslation;
 
 			}
 
@@ -793,6 +803,7 @@
     		stringUnorderedPartOriginal = helpArray1[1];
 			stringAlphabetSelected = helpArray1[2];
     		stringDictionaryOriginal = helpArray1[3];
+			stringURLToOriginal = helpArray1[4];
 
 		}
 		else
@@ -802,6 +813,7 @@
     		stringUnorderedPartOriginal = helpArray1[1];
 			stringAlphabetSelected = helpArray1[2];
 			stringDictionaryOriginal = helpArray1[3];
+			stringURLToOriginal = helpArray1[4];
 
 		}
 		
@@ -815,6 +827,7 @@
 			stringUnorderedPartTranslated = helpArray2[1];
 			stringAlphabetSelected = helpArray2[2];
 			stringDictionaryTranslated = helpArray2[3];
+			stringURLToTranslation = helpArray2[4];
 
 		}
 		else
@@ -824,6 +837,8 @@
 			stringUnorderedPartTranslated = helpArray2[1];
 			stringAlphabetSelected = helpArray2[2];
     		stringDictionaryTranslated = helpArray2[3];
+			stringURLToTranslation = helpArray2[4];
+
 		}
 
 		document.getElementById('textareaEditTranslated').value = stringUnorderedPartTranslated;
@@ -1476,27 +1491,32 @@
 			let counter = 0;
 			let stringWord = "";
 
-			if (document.getElementById("textAuthor").value != "" && document.getElementById("textTitle").value != "")
+			if (document.getElementById("textAuthor").value != "")
 			{
-
-				stringHTML += "<tr><td><hr></td></tr><tr><td id='header'>" + document.getElementById("textAuthor").value + " - <br>"  + document.getElementById("textTitle").value + "</td></tr>";
-
+				stringHTML += "<tr><td><hr></td></tr><tr><td id='header'>" + document.getElementById("textAuthor").value + "</td></tr>";
 			}
-			else
+
+			if (document.getElementById("textTitleOriginal").value != "")
 			{
-
-				if (document.getElementById("textAuthor").value != "")
-				{
-					stringHTML += "<tr><td><hr></td></tr><tr><td id='header'>" + document.getElementById("textAuthor").value + "</td></tr>";
-				}
-
-				if (document.getElementById("textTitle").value != "")
-				{
-					stringHTML += "<tr><td id='header'>" + document.getElementById("textTitle").value + "</td></tr>";
-				}
+				stringHTML += "<tr><td id='header'>" + document.getElementById("textTitleOriginal").value + "</td></tr>";
+			}
+			
+			if (document.getElementById("textTitleTranslation").value != "")
+			{
+				stringHTML += "<tr><td id='header'>&nbsp;&nbsp;" + document.getElementById("textTitleTranslation").value + "</td></tr>";
 			}
 
 			stringHTML += "<tr><td><hr></td></tr>";
+
+			if (stringURLToOriginal != "")
+			{
+				stringHTML += "<tr><td><a href='" + stringURLToOriginal + "' target='_blank'>Hyperlink to the original text on the internet.</a></td></tr>";
+			}
+
+			if (stringURLToTranslation != "")
+			{
+				stringHTML += "<tr><td><a href='" + stringURLToTranslation + "' target='_blank'>Hyperlink to the translated text on the internet.</a></td></tr><tr><td><hr></td></tr>";
+			}
 
 			stringHTML += "</table><table>";
 			
@@ -1757,8 +1777,18 @@
 </tr>
 <tr>
 	<td>
+	<br>	
+	Step 3 (optional): paste the URL to your original text in the textbox below.<br>
 	<br>
-	Step 3: choose the dictionary to apply to your translated text.<br>
+	</td>
+</tr>
+<tr>
+	<td><textarea id="textareaURLToOriginal" cols="50" rows="1" spellcheck="false" onclick=""></textarea></td>
+</tr>
+<tr>
+	<td>
+	<br>
+	Step 4: choose the dictionary to apply to your translated text.<br>
 	<br>
 	</td>
 </tr>
@@ -1783,12 +1813,22 @@
 <tr>
 	<td>
 	<br>
-	Step 4: Paste your translated text (e. g. the complete book) in the textbox below.<br>
+	Step 5: Paste your translated text (e. g. the complete book) in the textbox below.<br>
 	<br>
 	</td>
 </tr>
 <tr>
 		<td><textarea id="textareaNewTranslated" cols="50" rows="10" spellcheck="false"></textarea></td>
+</tr>
+<tr>
+	<td>
+	<br>	
+	Step 6 (optional): paste the URL to your translated text in the textbox below.<br>
+	<br>
+	</td>
+</tr>
+<tr>
+	<td><textarea id="textareaURLToTranslation" cols="50" rows="1" spellcheck="false" onclick=""></textarea></td>
 </tr>
 <tr>
 	<br>
@@ -1824,9 +1864,11 @@
 	<tr><td colspan="2"><input type="checkbox" id="checkboxEnumerate"> Enumerate every ten sentences</td></tr>
 	<tr><td colspan="2"><input type="checkbox" id="checkboxSequential"> Sequential presentation (instead of adjacent)</td></tr>
 	<tr><td colspan="2"><input type="checkbox" id="checkboxPlainText"> Present as plain text (excluding hyperlinks to dictionaries)</td></tr>
-	<tr><td id="tdTransliterateHTML" colspan="2"><input type="checkbox" id="checkboxTransliterateHTML"> Add a transliteration</td></tr>
-	<tr><td style="width: 250px;">Author (optional):</td><td><input type="text" id="textAuthor" size="40" style="font-size: 30px; padding: 5px;"></td></tr>
-	<tr><td style="width: 250px;">Title (optional):</td><td><input type="text" id="textTitle" size="40" style="font-size: 30px; padding: 5px;"></td></tr>
+	<tr><td colspan="2"><input type="checkbox" id="checkboxAddURL"> Present a reference to the texts on the internet (if available)</td></tr>
+	<tr><td id="tdTransliterateHTML" colspan="2"><input type="checkbox" id="checkboxTransliterateHTML"> Add a transliteration (if applicable)</td></tr>
+	<tr><td style="width: 350px;">Author (optional):</td><td><input type="text" id="textAuthor" size="40" style="font-size: 30px; padding: 5px;"></td></tr>
+	<tr><td style="width: 350px;">Title original (optional):</td><td><input type="text" id="textTitleOriginal" size="40" style="font-size: 30px; padding: 5px;"></td></tr>
+	<tr><td style="width: 350px;">Title translation (optional):</td><td><input type="text" id="textTitleTranslation" size="40" style="font-size: 30px; padding: 5px;"></td></tr>
 	<tr><td><button onclick="functionConfirmHTML()">Confirm</button></td></tr>
 </table>
 
